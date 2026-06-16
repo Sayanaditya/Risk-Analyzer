@@ -152,7 +152,8 @@ export default function App() {
         num_simulations: parseInt(numSimulations),
         confidence_level: parseFloat(confidenceLevel),
       };
-      const res = await fetch('/api/simulate', {
+      const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+      const res = await fetch(`${apiBaseUrl}/api/simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
